@@ -44,6 +44,7 @@ export const useAuthentication = () => {
                 await updateProfile(user,{
                     displayName:data.displayName
                 })
+                setLoading(false);
             
                 return user
 
@@ -53,7 +54,7 @@ export const useAuthentication = () => {
                 console.log(typeof error.message);
 
                 let systemErrorMessage
-                if(error.message.includes("Passoword")){
+                if(error.message.includes("Password")){
                      systemErrorMessage = "A senha precisa conter pelo menos 6 caracteres."
                 }else  if (error.message.includes("email-already")){
                     systemErrorMessage = "E-mail já cadastrado."
@@ -63,7 +64,7 @@ export const useAuthentication = () => {
             setError(systemErrorMessage)
         }
 
-        setLoading(false);
+     
     };
 
     useEffect(()=>{
