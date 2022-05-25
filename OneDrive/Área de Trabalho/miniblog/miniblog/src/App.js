@@ -35,10 +35,10 @@ function App() {
   const loadingUser = user === undefined
 
 useEffect(()=>{
-  onAuthStateChanged(auth,(user)=>{
+  onAuthStateChanged(auth, (user)=>{
     setUser(user)
   })
-},[auth])
+}, [auth]);
 
   
   if(loadingUser) {
@@ -55,9 +55,10 @@ useEffect(()=>{
           <Route path="/" element={<Home />}/>
           <Route path="/About" element={<About />}/>
           <Route path="/login" element={!user? <Login />: <Navigate to="/"/>}/>
-          <Route path="/register" element={!user? <Register />: <Navigate to="/"/>}/> 
+          <Route path="/register" element={!user ? <Register />: <Navigate to="/"/>}/> 
           <Route path= "/posts/create" element={user ? <CreatePost />: <Navigate to="/login"/>}/> 
           <Route path="/dashbord" element={user ? <Dashbord />: <Navigate to="/login"/>}/> 
+          
         </Routes>
       </div>
       <Footer/>

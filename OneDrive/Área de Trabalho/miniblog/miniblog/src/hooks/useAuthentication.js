@@ -72,7 +72,7 @@ export const useAuthentication = () => {
 
     // logout - sign out
 
-    const logout = () =>{
+    const logout = () => {
         checkIfIsCancelled();
         signOut(auth);
     }
