@@ -23,7 +23,7 @@ const insertReducer = (state,action) => {
 
 }
 
-export const useInserDocument = (docCollection) => {
+export const useInsertDocument = (docCollection) => {
 
     const [response, dispatch] = useReducer(insertReducer, initialState)
 
@@ -61,8 +61,8 @@ export const useInserDocument = (docCollection) => {
 
     useEffect(()=>{
         return () => setCancelled(true)
-    })
-    
+    },[])
+
     return{insertDocument, response};
 };
 
