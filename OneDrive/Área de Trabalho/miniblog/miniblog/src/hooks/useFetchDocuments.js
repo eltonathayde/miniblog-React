@@ -5,11 +5,8 @@ import {
     query,
     orderBy,
     onSnapshot, 
-    where,
-    QuerySnapshot,
-    doc,} 
+    where,} 
     from "firebase/firestore";
-import { async } from "@firebase/util";
 
     export const useFetchDocuments = (docCollection, search = null, uid = null) => {
         const [documents, setDocuments] = useState(null)
@@ -29,17 +26,23 @@ import { async } from "@firebase/util";
                 const collectionRef = await collection(db, docCollection)
 
                 try {
-                   let q 
-                //    busca
-                // dashbord
-
-
-                   q = await query(collectionRef, orderBy("createdAt","desc"));
+                   let q;
+        
+                 if(search){
+                    q = await query(
+                        collectionRef,
+                         where("tags","array-contains", search),
+                          orderBy("createdAt","desc")
+                    );
+                 
+                 }else{
+                    q = await query(collectionRef, orderBy("createdAt","desc"));
+                 }
 
                 //    mapeando dados alterados na coleção 
-                   await onSnapshot(q,(QuerySnapshot)=>{
+                   await onSnapshot(q,(querySnapshot)=>{
                        setDocuments(
-                           QuerySnapshot.docs.map((doc) =>({
+                           querySnapshot.docs.map((doc) =>({
                                id: doc.id,
                                ...doc.data(),
                            }))
