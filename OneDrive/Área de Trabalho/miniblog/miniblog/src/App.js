@@ -26,6 +26,8 @@ import Login from './pages/Login/Login';
 import CreatePost from './pages/CreatePost/CreatePost';
 import Dashbord from './pages/Dashbord/Dashbord';
 import Search from './pages/Search/Search';
+import Post from './pages/Post/Post';
+
 
 function App() {
 
@@ -56,10 +58,24 @@ useEffect(()=>{
           <Route path="/" element={<Home />}/>
           <Route path="/About" element={<About />}/>
           <Route path="/search" element={<Search />}/>
-          <Route path="/login" element={!user? <Login />: <Navigate to="/"/>}/>
-          <Route path="/register" element={!user ? <Register />: <Navigate to="/"/>}/> 
-          <Route path= "/posts/create" element={user ? <CreatePost />: <Navigate to="/login"/>}/> 
-          <Route path="/dashbord" element={user ? <Dashbord />: <Navigate to="/login"/>}/> 
+          <Route path="/post/:id" element={<Post/>}/>
+          
+          <Route
+           path="/login" 
+           element={!user? <Login />: <Navigate to="/"/>}
+           />
+          <Route 
+          path="/register" 
+          element={!user ? <Register />: <Navigate to="/"/>}
+          /> 
+          <Route
+           path= "/posts/create" 
+           element={user ? <CreatePost />: <Navigate to="/login"/>}
+           /> 
+          <Route 
+           path="/dashbord" 
+           element={user ? <Dashbord />: <Navigate to="/login"/>}
+           /> 
           
         </Routes>
       </div>
