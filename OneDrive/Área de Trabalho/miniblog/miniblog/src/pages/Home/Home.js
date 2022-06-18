@@ -2,7 +2,7 @@
 //   CSS
   import styles from "./Home.module.css"
 //   hooks
- import{useNavigate, Link, } from "react-router-dom"
+ import{useNavigate, Link} from "react-router-dom"
  import { useState } from "react"
 import { useFetchDocuments } from "../../hooks/useFetchDocuments";
 import PostDetail from "../../components/PostDetail";
@@ -24,7 +24,7 @@ const Home = () => {
         
         
         if(query){
-            return navigate(`/search?Q= ${query}`);
+            return navigate(`/search?q=${query}`);
         }
     };
         return(

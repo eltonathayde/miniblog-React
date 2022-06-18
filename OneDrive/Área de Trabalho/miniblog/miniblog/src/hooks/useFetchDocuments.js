@@ -31,7 +31,7 @@ import {
                  if(search){
                     q = await query(
                         collectionRef,
-                         where("tags","array-contains", search),
+                         where("tagsArray","array-contains", search),
                           orderBy("createdAt","desc")
                     );
                  
