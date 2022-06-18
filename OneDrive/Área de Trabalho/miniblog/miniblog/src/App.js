@@ -32,10 +32,8 @@ import EditPost from './pages/EditPost/EditPost';
 
 
 function App() {
-
   const [user,setUser] = useState(undefined)
   const {auth} = useAuthentication()
-
 
   const loadingUser = user === undefined
 
